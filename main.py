@@ -19,7 +19,13 @@ dataset = st.container()
 features = st.container()
 model_training = st.container()
 
-inp_data = pd.read_csv("C:/Vadivel/Analytics/streamlit/my-streamlit-frontend/data/titanic.csv")
+import os
+cwd = os.getcwd()
+
+from pathlib import Path
+path = Path(__file__).parent / "../data/titanic.csv"
+
+inp_data = pd.read_csv(os.path.join(cwd,"titanic.csv"))
 pclass_dist = inp_data['pclass'].value_counts()
 
 inp_data=inp_data[pd.notnull(inp_data['fare'])]
